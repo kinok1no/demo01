@@ -119,24 +119,19 @@
     iframe.classList.add('close-5e74be00');
     iframe.allow = "microphone *";
 
-    // --- 入力欄とボタンの作成 ---
-    var inputContainer = document.createElement('div');
-    inputContainer.id = 'input-container-5e74be00';
-
-    var openButton = document.createElement('button');
-    openButton.id = 'chat-open-button-5e74be00';
-    openButton.innerText = 'ご質問をどうぞ...';
+    // --- クリックで開くための要素を作成 ---
+    var openTrigger = document.createElement('div');
+    openTrigger.id = 'chat-open-trigger-5e74be00';
+    openTrigger.innerText = 'ご質問をどうぞ...';
 
     // --- 要素の組み立て ---
-    inputContainer.appendChild(openButton);
-
     widgetContainer.appendChild(title);
-    widgetContainer.appendChild(inputContainer);
+    widgetContainer.appendChild(openTrigger);
     widgetContainer.appendChild(iframe);
 
     // --- イベントリスナーの設定 ---
-    // 「チャットを開始」ボタンのクリックイベント
-    openButton.addEventListener('click', function(event) {
+    // トリガーのクリックイベント
+    openTrigger.addEventListener('click', function(event) {
       event.stopPropagation(); // 親要素へのイベント伝播を停止
 
       var _f = document.getElementById('frame-5e74be00');
@@ -147,7 +142,7 @@
 
       // iframeを表示し、入力欄を非表示にする
       _f.classList.remove('close-5e74be00');
-      document.getElementById('input-container-5e74be00').style.display = 'none';
+      document.getElementById('chat-open-trigger-5e74be00').style.display = 'none';
       
       // タイトルをクリックで閉じられるように案内
       title.innerText = '💬 HelpNAVi (クリックで閉じる)';
@@ -159,7 +154,7 @@
       // iframeが開いている場合のみ動作
       if (!_f.classList.contains('close-5e74be00')) {
         _f.classList.add('close-5e74be00');
-        document.getElementById('input-container-5e74be00').style.display = 'block';
+        document.getElementById('chat-open-trigger-5e74be00').style.display = 'block';
         title.innerText = '💬 HelpNAVi'; // タイトルを元に戻す
       }
     });
@@ -218,25 +213,20 @@
     max-height: 0;
     margin-top: 0;
   }
-  /* --- 入力欄関連のスタイル --- */
-  #input-container-5e74be00 {
-    padding: 15px;
+  /* --- チャット開始トリガーのスタイル --- */
+  #chat-open-trigger-5e74be00 {
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #374151; /* gray-700 */
+    background-color: #f9fafb; /* gray-50 */
+    cursor: pointer;
+    transition: background-color 0.2s;
     display: block; /* 初期表示 */
   }
-  #chat-open-button-5e74be00 {
-    width: 100%;
-    padding: 12px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.2s;
-  }
-  #chat-open-button-5e74be00:hover {
-    background-color: #1d4ed8;
+  #chat-open-trigger-5e74be00:hover {
+    background-color: #f3f4f6; /* gray-100 */
   }
 </style>
 
