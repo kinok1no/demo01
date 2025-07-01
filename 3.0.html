@@ -123,17 +123,11 @@
     var inputContainer = document.createElement('div');
     inputContainer.id = 'input-container-5e74be00';
 
-    var inputField = document.createElement('input');
-    inputField.type = 'text';
-    inputField.placeholder = 'ご質問をどうぞ...';
-    inputField.id = 'chat-input-5e74be00';
-
     var openButton = document.createElement('button');
     openButton.id = 'chat-open-button-5e74be00';
-    openButton.innerText = 'チャットを開始';
+    openButton.innerText = 'ご質問をどうぞ...';
 
     // --- 要素の組み立て ---
-    inputContainer.appendChild(inputField);
     inputContainer.appendChild(openButton);
 
     widgetContainer.appendChild(title);
@@ -146,16 +140,10 @@
       event.stopPropagation(); // 親要素へのイベント伝播を停止
 
       var _f = document.getElementById('frame-5e74be00');
-      var _input = document.getElementById('chat-input-5e74be00');
-      var question = _input.value.trim(); // 入力値を取得
       var baseUrl = 'https://ijuken.com/faq/user/client/cbts-travel';
-      var finalUrl = baseUrl;
-
-      // 質問が入力されていれば、URLにクエリパラメータを追加
-      if (question) {
-        finalUrl += '?q=' + encodeURIComponent(question);
+      if (_f.src === '') {
+        _f.src = baseUrl;
       }
-      _f.src = finalUrl; // iframeのsrcを設定
 
       // iframeを表示し、入力欄を非表示にする
       _f.classList.remove('close-5e74be00');
@@ -234,15 +222,6 @@
   #input-container-5e74be00 {
     padding: 15px;
     display: block; /* 初期表示 */
-  }
-  #chat-input-5e74be00 {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
   }
   #chat-open-button-5e74be00 {
     width: 100%;
