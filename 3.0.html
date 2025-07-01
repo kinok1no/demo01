@@ -215,18 +215,22 @@
   }
   /* --- チャット開始トリガーのスタイル --- */
   #chat-open-trigger-5e74be00 {
-    padding: 20px;
-    text-align: center;
+    margin: 15px;
+    padding: 12px 16px;
+    text-align: left;
     font-size: 16px;
-    font-weight: bold;
-    color: #374151; /* gray-700 */
-    background-color: #ffffff; /* 白に変更 */
+    font-weight: normal;
+    color: #9ca3af; /* gray-400 (プレースホルダーのような色) */
+    background-color: #ffffff;
+    border: 1px solid #d1d5db; /* gray-300 (枠線) */
+    border-radius: 8px; /* 角を丸くする */
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease-in-out;
     display: block; /* 初期表示 */
   }
   #chat-open-trigger-5e74be00:hover {
-    background-color: #f9fafb; /* ホバー時にごく薄いグレーになるように変更 */
+    border-color: #9ca3af; /* gray-400 */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); /* クリックできることを示す影 */
   }
 </style>
 
